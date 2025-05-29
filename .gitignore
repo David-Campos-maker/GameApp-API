@@ -27,6 +27,16 @@ project.fragment.lock.json
 *.db
 *.log
 
+## Migrations
+Migrations/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.DS_Store
+*.bak
+*.swp
+*.tmp
+
 ## Others
 *.cache
 *.tmp
