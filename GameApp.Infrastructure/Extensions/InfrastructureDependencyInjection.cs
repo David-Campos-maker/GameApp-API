@@ -1,4 +1,6 @@
 using System;
+using GameApp.Domain.Interfaces.Repositories;
+using GameApp.Infrastructure.Repositories.Game;
 using GameApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +15,8 @@ public static class InfrastructureDependencyInjection
             services.AddDbContext<GameAppDbContext>(options => {
                   options.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IGameRepository, GameRepository>();
 
             return services;
       }

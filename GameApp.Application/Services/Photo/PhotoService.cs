@@ -36,8 +36,7 @@ public class PhotoService : IPhotoService
                         Transformation = new Transformation()
                               .Height(600)
                               .Width(400)
-                              .Crop("fill")
-                              .Gravity("face"),
+                              .Crop("fill"),
                         Folder = "GameApp"
                   };
 
