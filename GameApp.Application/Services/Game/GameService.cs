@@ -70,4 +70,23 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
                   return ApiResult<GameDto>.Failure(ex.Message);
             }
       }
+
+      public async Task<ApiResult<List<GameDto>>> GetGamesAsync()
+      {
+            try
+            {
+                  var games = await repository.GetAllGamesAsync();
+                  if (games != null)
+                  {
+                        var results = games.Select(g => g.EntityToDto()).ToList();
+                        return ApiResult<List<GameDto>>.Success(results);
+                  }
+
+                  return ApiResult<List<GameDto>>.Failure("No games found");
+            }
+            catch (Exception ex)
+            {
+                  return ApiResult<List<GameDto>>.Failure(ex.Message);
+            }
+      }
 }

@@ -14,7 +14,8 @@ public static class GameEndpointExtensions
                   .WithTags("Game")
                   .MapEndpoint<AddNewGameEndpoint>()
                   .MapEndpoint<AddGamePhotoEndpoint>()
-                  .MapEndpoint<GetGameByIdEndpoint>();
+                  .MapEndpoint<GetGameByIdEndpoint>()
+                  .MapEndpoint<GetGamesEndpoint>();
       }
       private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)
         where TEndpoint : IEndpoint
