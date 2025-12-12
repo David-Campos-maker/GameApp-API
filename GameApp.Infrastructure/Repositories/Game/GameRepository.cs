@@ -2,6 +2,7 @@ using System;
 using GameApp.Domain.Entities;
 using GameApp.Domain.Interfaces.Repositories;
 using GameApp.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameApp.Infrastructure.Repositories.Game;
 
@@ -11,5 +12,14 @@ public class GameRepository(GameAppDbContext context) : IGameRepository
       {
             context.Games.Add(game);
             return await context.SaveChangesAsync() > 0;
+      }
+
+      public async Task<GameEntity?> GetGameByIdAsync(int id)
+      {
+            var game = await context.Games.FirstOrDefaultAsync(g => g.Id == id);
+
+            if (game == null) return null;
+            
+            return game;
       }
 }
