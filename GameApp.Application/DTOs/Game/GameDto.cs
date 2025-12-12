@@ -5,5 +5,6 @@ public record GameDto
       string Name, 
       DateOnly Published, 
       string Platform, 
-      string Gender
+      string Gender,
+      string? CoverPhotoUrl
 );

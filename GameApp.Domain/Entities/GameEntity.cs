@@ -15,6 +15,11 @@ public class GameEntity
             CoverPhoto = coverPhoto;
       }
 
+      public void SetCoverPhoto(PhotoEntity photo)
+      {
+            CoverPhoto = photo;
+      }
+
       public int Id { get; set; }
       public string Name { get; private set; } = string.Empty;
       public PhotoEntity? CoverPhoto { get; private set; }

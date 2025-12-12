@@ -24,7 +24,8 @@ public static class GameMapperExtensions
                   entity.Name,
                   entity.Published,
                   entity.Platform,
-                  entity.Gender
+                  entity.Gender,
+                  entity.CoverPhoto?.Url
             );
       }
 }

@@ -9,6 +9,6 @@ public static class DependencyInjection
       public static void ConfigureServices(this IServiceCollection services, IConfiguration config)
       {
             services.AddInfrastructureServices(config);
-            services.AddApplicationServices();
+            services.AddApplicationServices(config);
       }
 }

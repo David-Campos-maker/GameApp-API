@@ -33,10 +33,6 @@ public class PhotoService : IPhotoService
                   var uploadParams = new ImageUploadParams
                   {
                         File = new FileDescription(file.FileName, stream),
-                        Transformation = new Transformation()
-                              .Height(600)
-                              .Width(400)
-                              .Crop("fill"),
                         Folder = "GameApp"
                   };
 

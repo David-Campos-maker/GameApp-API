@@ -9,4 +9,5 @@ public interface IGameService
 {
       Task<ApiResult> AddGameAsync(NewGameDto request);
       Task<ApiResult> AddGamePhoto(int gameId, IFormFile photo);
+      Task<ApiResult<GameDto>> GetGameByIdAsync(int id);
 }
