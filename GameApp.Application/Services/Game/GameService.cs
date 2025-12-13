@@ -56,6 +56,24 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
             }
       }
 
+      public async Task<ApiResult> DeleteGameAsync(int id)
+      {
+            try
+            {
+                  var game = await repository.GetGameByIdAsync(id);
+                  if (game == null) return ApiResult.Failure("Game not found");
+
+                  var deleted = await repository.DeleteGameAsync(id);
+                  if (deleted) return ApiResult.Success("Game successfully deleted");
+
+                  return ApiResult.Failure("Something went wrong while deleting the game");
+            }
+            catch (Exception ex)
+            {
+                  return ApiResult.Failure(ex.Message);
+            }
+      }
+
       public async Task<ApiResult<GameDto>> GetGameByIdAsync(int id)
       {
             try

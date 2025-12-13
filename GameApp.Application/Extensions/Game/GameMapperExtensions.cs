@@ -21,6 +21,7 @@ public static class GameMapperExtensions
       {
             return new GameDto
             (
+                  entity.Id,
                   entity.Name,
                   entity.Published,
                   entity.Platform,

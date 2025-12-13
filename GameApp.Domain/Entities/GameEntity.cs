@@ -23,6 +23,15 @@ public class GameEntity
             Genders = genders;
       }
 
+      public GameEntity(int id, string name, DateOnly published, string platform, List<string> genders)
+      {
+            Id = id;
+            Name = name;
+            Published = published;
+            Platform = platform;
+            Genders = genders;
+      }
+
       public void SetCoverPhoto(PhotoEntity photo)
       {
             CoverPhoto = photo;
