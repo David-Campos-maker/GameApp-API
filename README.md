@@ -49,7 +49,15 @@ dotnet user-secrets list
 
 ### 🚀 Running the project:
 
-Use this command in the GameApp.API directory:
+Use this command in the GameApp.API directory to run the project:
+
+```bash
+dotnet clean
+```
+
+```bash
+dotnet build
+```
 
 ```bash
 dotnet watch run
