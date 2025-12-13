@@ -31,7 +31,7 @@ Initialize User Secrets
 dotnet user-secrets init
 ```
 
-Set Cloudinary Credentials
+Set Cloudinary Credentials In Development Mode:
 
 ```bash
 dotnet user-secrets set "CloudinarySettings:CloudName" <Your-cloud-name>
