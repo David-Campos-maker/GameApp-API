@@ -1,19 +1,17 @@
 using System;
 using GameApp.API.Interfaces;
-using GameApp.Application.DTOs.Game;
 using GameApp.Application.Services.Game;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameApp.API.Endpoints.Game;
 
-public class UpdateGameEndpoint : IEndpoint
+public class RemoveGamePhotoEndpoint : IEndpoint
 {
       public static void Map(IEndpointRouteBuilder app) =>
-            app.MapPut("update-game" , 
-            async ([FromServices] IGameService handler, UpdateGameDto request) =>
+            app.MapDelete("remove-game-photo/{id:int}", 
+            async ([FromServices] IGameService handler, int id) =>
             {
-                  var result = await handler.UpdateGameAsync(request);
-
+                  var result = await handler.RemoveGamePhotoAsync(id);
                   if (!result.Succeed) return Results.BadRequest(result.Message);
 
                   return Results.Ok(result.Data);

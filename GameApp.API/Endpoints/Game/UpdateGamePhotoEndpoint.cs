@@ -8,10 +8,10 @@ namespace GameApp.API.Endpoints.Game;
 public class UpdateGamePhotoEndpoint : IEndpoint
 {
       public static void Map(IEndpointRouteBuilder app) =>
-            app.MapPost("update-game-photo/{gameId}",
+            app.MapPut("update-game-photo/{gameId}",
                   async ([FromServices] IGameService handler, int gameId, IFormFile newPhoto) =>
                   {
-                        var result =  await handler.UpdateGamePhoto(gameId, newPhoto);
+                        var result =  await handler.UpdateGamePhotoAsync(gameId, newPhoto);
                         if (!result.Succeed) return Results.BadRequest(result.Message);
                         
                         return Results.Ok(result.Data);

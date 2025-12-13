@@ -8,7 +8,7 @@ namespace GameApp.API.Endpoints.Game;
 public class DeleteGameEndpoint : IEndpoint
 {
       public static void Map(IEndpointRouteBuilder app) =>
-            app.MapDelete("delete-game/{id}",
+            app.MapDelete("delete-game/{id:int}",
                   async ([FromServices] IGameService handler, int id) =>
                   {
                         var result = await handler.DeleteGameAsync(id);

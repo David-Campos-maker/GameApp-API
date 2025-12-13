@@ -37,6 +37,11 @@ public class GameEntity
             CoverPhoto = photo;
       }
 
+      public void RemoveCoverPhoto()
+      {
+            CoverPhoto = null;
+      }
+
       public void Update(string? name, DateOnly? published, string? platform, List<string>? genders)
       {
             Name = name ?? Name;

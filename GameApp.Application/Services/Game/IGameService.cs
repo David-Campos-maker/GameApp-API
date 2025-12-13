@@ -13,5 +13,6 @@ public interface IGameService
       Task<ApiResult<List<GameDto>>> GetGamesAsync();
       Task<ApiResult<GameDto>> UpdateGameAsync(UpdateGameDto request);
       Task<ApiResult> DeleteGameAsync(int id);
-      Task<ApiResult<GameDto>> UpdateGamePhoto(int gameId, IFormFile newPhoto);
+      Task<ApiResult<GameDto>> UpdateGamePhotoAsync(int gameId, IFormFile newPhoto);
+      Task<ApiResult<GameDto>> RemoveGamePhotoAsync(int gameId);
 }

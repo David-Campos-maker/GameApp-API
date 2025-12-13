@@ -109,6 +109,38 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
             }
       }
 
+      public async Task<ApiResult<GameDto>> RemoveGamePhotoAsync(int gameId)
+      {
+            try
+            {
+                  var game = await repository.GetGameByIdAsync(gameId);
+                  if (game == null) return ApiResult<GameDto>.Failure("Game not found");
+
+                  if (game.CoverPhoto?.PublicId != null)
+                  {
+                        var deleteResult = await photoService.DeletePhotoAsync(game.CoverPhoto.PublicId);
+
+                        if (deleteResult.Error != null)
+                              return ApiResult<GameDto>
+                                          .Failure("Could not delete the photo. " + deleteResult.Error);
+
+                        game.RemoveCoverPhoto();
+
+                        var result = await repository.UpdateGameAsync(game);
+
+                        if (result) return ApiResult<GameDto>.Success(game.EntityToDto());
+
+                        return ApiResult<GameDto>.Failure("Something went wrong while removing the photo");
+                  }
+
+                  return ApiResult<GameDto>.Failure("Game does not have a photo to remove");
+            }
+            catch (Exception ex)
+            {
+                  return ApiResult<GameDto>.Failure(ex.Message);
+            }
+      }
+
       public async Task<ApiResult<GameDto>> UpdateGameAsync(UpdateGameDto request)
       {
             try
@@ -132,7 +164,7 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
             }
       }
 
-      public async Task<ApiResult<GameDto>> UpdateGamePhoto(int gameId, IFormFile newPhoto)
+      public async Task<ApiResult<GameDto>> UpdateGamePhotoAsync(int gameId, IFormFile newPhoto)
       {
             try
             {
