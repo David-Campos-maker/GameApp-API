@@ -1,5 +1,6 @@
 using System;
 using GameApp.Application.DTOs.Game;
+using GameApp.Application.Extensions.Review;
 using GameApp.Domain.Entities;
 
 namespace GameApp.Application.Extensions.Game;
@@ -26,7 +27,8 @@ public static class GameMapperExtensions
                   entity.Published,
                   entity.Platform,
                   entity.Genders,
-                  entity.CoverPhoto?.Url
+                  entity.CoverPhoto?.Url,
+                  [.. entity.Reviews.Select(r => r.EntityToDto())]
             );
       }
 }

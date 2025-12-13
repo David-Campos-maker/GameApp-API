@@ -1,6 +1,7 @@
 using System;
 using GameApp.Domain.Interfaces.Repositories;
 using GameApp.Infrastructure.Repositories.Game;
+using GameApp.Infrastructure.Repositories.Review;
 using GameApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ public static class InfrastructureDependencyInjection
             });
 
             services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
 
             return services;
       }

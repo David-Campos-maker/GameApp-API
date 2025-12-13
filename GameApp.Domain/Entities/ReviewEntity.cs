@@ -13,6 +13,14 @@ public class ReviewEntity
             CreatedDate = DateTime.Now;
       }
 
+      public ReviewEntity(int gameId, string commentary, decimal rate)
+      {
+            GameId = gameId;
+            Commentary = commentary;
+            Rate = rate;
+            CreatedDate = DateTime.Now;
+      }
+
       public int Id { get; set; }
       public decimal Rate { get; private set; }
       public string Commentary { get; private set; } = string.Empty;

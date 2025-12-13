@@ -27,6 +27,7 @@ public class GameRepository(GameAppDbContext context) : IGameRepository
       public async Task<List<GameEntity>?> GetAllGamesAsync()
       {
             var games = await context.Games
+                  .Include(g => g.Reviews)
                   .Include(g => g.CoverPhoto)
                   .ToListAsync();
             
@@ -38,6 +39,7 @@ public class GameRepository(GameAppDbContext context) : IGameRepository
       public async Task<GameEntity?> GetGameByIdAsync(int id)
       {
             var game = await context.Games
+                  .Include(g => g.Reviews)
                   .Include(g => g.CoverPhoto)
                   .FirstOrDefaultAsync(g => g.Id == id);
 
