@@ -31,6 +31,8 @@ Initialize User Secrets
 dotnet user-secrets init
 ```
 
+### Run the following commands int the GameApp.API directory to set the environment variables:
+
 Set Cloudinary Credentials In Development Mode:
 
 ```bash
