@@ -1,4 +1,5 @@
 using System;
+using CloudinaryDotNet;
 using GameApp.Application.ApiResults;
 using GameApp.Application.DTOs.Game;
 using GameApp.Application.Extensions.Game;
@@ -124,6 +125,46 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
                         return ApiResult<GameDto>.Success(existingGame.EntityToDto());
 
                   return ApiResult<GameDto>.Failure("Something went wrong while updating the game");
+            }
+            catch (Exception ex)
+            {
+                  return ApiResult<GameDto>.Failure(ex.Message);
+            }
+      }
+
+      public async Task<ApiResult<GameDto>> UpdateGamePhoto(int gameId, IFormFile newPhoto)
+      {
+            try
+            {
+                  var game = await repository.GetGameByIdAsync(gameId);
+                  if (game == null) return ApiResult<GameDto>.Failure("Game not found");
+
+                  if (game.CoverPhoto?.PublicId != null)
+                  {
+                        var deleteResult = await photoService.DeletePhotoAsync(game.CoverPhoto.PublicId);
+
+                        if (deleteResult.Error != null) 
+                              return ApiResult<GameDto>
+                                    .Failure("Could not delete the old photo. " + deleteResult.Error.Message);
+                  }
+
+                  var result = await photoService.AddPhotoAsync(newPhoto);
+                  if (result.Error != null)
+                  {
+                        return ApiResult<GameDto>.Failure(result.Error.Message);
+                  }
+
+                  var photoEntity = new PhotoEntity
+                  (
+                        result.SecureUrl.AbsoluteUri, 
+                        result.PublicId
+                  );
+
+                  game.SetCoverPhoto(photoEntity);
+
+                  if (await repository.UpdateGameAsync(game)) return ApiResult<GameDto>.Success(game.EntityToDto());
+
+                  return ApiResult<GameDto>.Failure("Something went wrong while saving the new photo");
             }
             catch (Exception ex)
             {
