@@ -9,4 +9,5 @@ public interface IGameRepository
       Task<GameEntity?> GetGameByIdAsync(int id);
       Task<List<GameEntity>?> GetAllGamesAsync();
       Task<bool> UpdateGameAsync(GameEntity game);
+      Task<bool> DeleteGameAsync(int id);
 }

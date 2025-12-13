@@ -6,13 +6,21 @@ public class GameEntity
 {
       private GameEntity() { }
 
-      public GameEntity(string name, DateOnly published, string platform, string gender, PhotoEntity? coverPhoto = null)
+      public GameEntity(string name, DateOnly published, string platform, List<string> genders, PhotoEntity? coverPhoto = null)
       {
             Name = name;
             Published = published;
             Platform = platform;
-            Gender = gender;
+            Genders = genders;
             CoverPhoto = coverPhoto;
+      }
+
+      public GameEntity(string name, DateOnly published, string platform, List<string> genders)
+      {
+            Name = name;
+            Published = published;
+            Platform = platform;
+            Genders = genders;
       }
 
       public void SetCoverPhoto(PhotoEntity photo)
@@ -20,11 +28,19 @@ public class GameEntity
             CoverPhoto = photo;
       }
 
+      public void Update(string? name, DateOnly? published, string? platform, List<string>? genders)
+      {
+            Name = name ?? Name;
+            Published = published ?? Published;
+            Platform = platform ?? Platform;
+            Genders = genders ?? Genders;
+      }
+
       public int Id { get; set; }
       public string Name { get; private set; } = string.Empty;
       public PhotoEntity? CoverPhoto { get; private set; }
       public DateOnly Published { get; private set; }
       public string Platform { get; private set; } = string.Empty;
-      public string Gender { get; private set; } = string.Empty;
+      public List<string> Genders { get; private set; } = [];
       public List<ReviewEntity> Reviews { get; set; } = [];
 }

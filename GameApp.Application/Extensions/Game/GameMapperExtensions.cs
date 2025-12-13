@@ -13,7 +13,7 @@ public static class GameMapperExtensions
                   dto.Name,
                   dto.Published,
                   dto.Platform,
-                  dto.Gender
+                  dto.Genders
             );
       }
 
@@ -24,7 +24,7 @@ public static class GameMapperExtensions
                   entity.Name,
                   entity.Published,
                   entity.Platform,
-                  entity.Gender,
+                  entity.Genders,
                   entity.CoverPhoto?.Url
             );
       }

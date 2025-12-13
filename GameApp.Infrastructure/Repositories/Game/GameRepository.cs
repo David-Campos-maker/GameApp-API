@@ -14,6 +14,16 @@ public class GameRepository(GameAppDbContext context) : IGameRepository
             return await context.SaveChangesAsync() > 0;
       }
 
+      public async Task<bool> DeleteGameAsync(int id)
+      {
+            var game = await context.Games.FirstOrDefaultAsync(g => g.Id == id);
+
+            if (game == null) return false;
+            
+            context.Games.Remove(game);
+            return await context.SaveChangesAsync() > 0;
+      }
+
       public async Task<List<GameEntity>?> GetAllGamesAsync()
       {
             var games = await context.Games

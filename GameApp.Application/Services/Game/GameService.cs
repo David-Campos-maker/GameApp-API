@@ -89,4 +89,27 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
                   return ApiResult<List<GameDto>>.Failure(ex.Message);
             }
       }
+
+      public async Task<ApiResult<GameDto>> UpdateGameAsync(UpdateGameDto request)
+      {
+            try
+            {
+                  var existingGame = await repository.GetGameByIdAsync(request.Id);
+
+                  if (existingGame == null) return ApiResult<GameDto>.Failure("Game not found");
+
+                  existingGame.Update(request.Name, request.Published, request.Platform, request.Genders);
+
+                  var result = await repository.UpdateGameAsync(existingGame);
+
+                  if (result)
+                        return ApiResult<GameDto>.Success(existingGame.EntityToDto());
+
+                  return ApiResult<GameDto>.Failure("Something went wrong while updating the game");
+            }
+            catch (Exception ex)
+            {
+                  return ApiResult<GameDto>.Failure(ex.Message);
+            }
+      }
 }

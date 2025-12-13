@@ -5,5 +5,5 @@ public record NewGameDto
       string Name, 
       DateOnly Published, 
       string Platform, 
-      string Gender
+      List<string> Genders
 );
