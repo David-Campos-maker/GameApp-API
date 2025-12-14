@@ -5,6 +5,6 @@ public record class UpdateGameDto
       int Id,
       string? Name,
       DateOnly? Published,
-      string? Platform,
+      List<string>? Platforms,
       List<string>? Genders
 );
