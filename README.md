@@ -36,9 +36,9 @@ dotnet user-secrets init
 Set Cloudinary Credentials In Development Mode:
 
 ```bash
-dotnet user-secrets set "CloudinarySettings:CloudName" <Your-cloud-name>
-dotnet user-secrets set "CloudinarySettings:ApiKey" <Your-api-key>
-dotnet user-secrets set "CloudinarySettings:ApiSecret" <Your-api-secret>
+dotnet user-secrets set "CloudinarySettings:CloudName" "<Your-cloud-name>"
+dotnet user-secrets set "CloudinarySettings:ApiKey" "<Your-api-key>"
+dotnet user-secrets set "CloudinarySettings:ApiSecret" "<Your-api-secret>"
 ```
 
 Run this command to verify if the user secrets are correctly set:

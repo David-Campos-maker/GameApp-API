@@ -13,7 +13,7 @@ public static class GameMapperExtensions
             (
                   dto.Name,
                   dto.Published,
-                  dto.Platform,
+                  dto.Platforms,
                   dto.Genders
             );
       }
@@ -25,7 +25,7 @@ public static class GameMapperExtensions
                   entity.Id,
                   entity.Name,
                   entity.Published,
-                  entity.Platform,
+                  entity.Platforms,
                   entity.Genders,
                   entity.CoverPhoto?.Url,
                   [.. entity.Reviews.Select(r => r.EntityToDto())]

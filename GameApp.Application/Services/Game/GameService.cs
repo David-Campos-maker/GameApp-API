@@ -149,7 +149,7 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
 
                   if (existingGame == null) return ApiResult<GameDto>.Failure("Game not found");
 
-                  existingGame.Update(request.Name, request.Published, request.Platform, request.Genders);
+                  existingGame.Update(request.Name, request.Published, request.Platforms, request.Genders);
 
                   var result = await repository.UpdateGameAsync(existingGame);
 
