@@ -1,10 +1,9 @@
 using System;
-using CloudinaryDotNet;
 using GameApp.Application.ApiResults;
 using GameApp.Application.DTOs.Game;
 using GameApp.Application.Extensions.Game;
 using GameApp.Application.Services.Photo;
-using GameApp.Domain.Entities;
+using GameApp.Domain.Entities.Game;
 using GameApp.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Http;
 
@@ -35,16 +34,18 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
                   var game = await repository.GetGameByIdAsync(gameId);
                   if (game == null) return ApiResult.Failure("Game not found");
 
-                  var result = await photoService.AddPhotoAsync(photo);
+                  var folder = "GameApp/Games";
+
+                  var result = await photoService.AddPhotoAsync(photo, folder);
                   if (result.Error != null) return ApiResult.Failure(result.Error.Message);
 
-                  var photoEntity = new PhotoEntity
+                  var gamePhotoEntity = new GamePhotoEntity
                   (
                         result.SecureUrl.AbsoluteUri,
                         result.PublicId
                   );
 
-                  game.SetCoverPhoto(photoEntity);
+                  game.SetCoverPhoto(gamePhotoEntity);
 
                   if (await repository.UpdateGameAsync(game))
                         return ApiResult.Success("Photo successfully added to the game");
@@ -180,19 +181,21 @@ public class GameService(IGameRepository repository, IPhotoService photoService)
                                     .Failure("Could not delete the old photo. " + deleteResult.Error.Message);
                   }
 
-                  var result = await photoService.AddPhotoAsync(newPhoto);
+                  var folder = "GameApp/Games";
+
+                  var result = await photoService.AddPhotoAsync(newPhoto, folder);
                   if (result.Error != null)
                   {
                         return ApiResult<GameDto>.Failure(result.Error.Message);
                   }
 
-                  var photoEntity = new PhotoEntity
+                  var gamePhotoEntity = new GamePhotoEntity
                   (
                         result.SecureUrl.AbsoluteUri, 
                         result.PublicId
                   );
 
-                  game.SetCoverPhoto(photoEntity);
+                  game.SetCoverPhoto(gamePhotoEntity);
 
                   if (await repository.UpdateGameAsync(game)) return ApiResult<GameDto>.Success(game.EntityToDto());
 

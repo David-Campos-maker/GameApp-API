@@ -1,15 +1,14 @@
 using System;
-using GameApp.Domain.Entities;
+using GameApp.Domain.Entities.Review;
 
-namespace GameApp.Domain.Interfaces.Repositories;
-
-public interface IReviewRepository
+namespace GameApp.Domain.Interfaces.Repositories
 {
-      Task<bool> CreateReviewAsync(ReviewEntity review);
+      public interface IReviewRepository
+      {
+            Task<bool> CreateReviewAsync(ReviewEntity review);
 
-      Task<bool> DeleteReviewAsync(ReviewEntity review);
+            Task<bool> DeleteReviewAsync(ReviewEntity review);
 
-      Task<ReviewEntity?> GetReviewByIdAsync(int id);
-      
-      
+            Task<ReviewEntity?> GetReviewByIdAsync(int id);
+      }
 }

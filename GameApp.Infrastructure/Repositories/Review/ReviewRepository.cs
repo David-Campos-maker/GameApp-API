@@ -1,5 +1,5 @@
 using System;
-using GameApp.Domain.Entities;
+using GameApp.Domain.Entities.Review;
 using GameApp.Domain.Interfaces.Repositories;
 using GameApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;

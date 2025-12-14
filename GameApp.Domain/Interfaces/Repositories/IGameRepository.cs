@@ -1,13 +1,14 @@
 using System;
-using GameApp.Domain.Entities;
+using GameApp.Domain.Entities.Game;
 
-namespace GameApp.Domain.Interfaces.Repositories;
-
-public interface IGameRepository
+namespace GameApp.Domain.Interfaces.Repositories
 {
-      Task<bool> AddGameAsync(GameEntity game);
-      Task<GameEntity?> GetGameByIdAsync(int id);
-      Task<List<GameEntity>?> GetAllGamesAsync();
-      Task<bool> UpdateGameAsync(GameEntity game);
-      Task<bool> DeleteGameAsync(int id);
+      public interface IGameRepository
+      {
+            Task<bool> AddGameAsync(GameEntity game);
+            Task<GameEntity?> GetGameByIdAsync(int id);
+            Task<List<GameEntity>?> GetAllGamesAsync();
+            Task<bool> UpdateGameAsync(GameEntity game);
+            Task<bool> DeleteGameAsync(int id);
+      }
 }

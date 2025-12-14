@@ -23,7 +23,7 @@ public class PhotoService : IPhotoService
             _cloudinary = new Cloudinary(acc);
       }
 
-      public async Task<ImageUploadResult> AddPhotoAsync(IFormFile file)
+      public async Task<ImageUploadResult> AddPhotoAsync(IFormFile file, string folder)
       {
             var uploadResult = new ImageUploadResult();
 
@@ -33,7 +33,7 @@ public class PhotoService : IPhotoService
                   var uploadParams = new ImageUploadParams
                   {
                         File = new FileDescription(file.FileName, stream),
-                        Folder = "GameApp"
+                        Folder = folder
                   };
 
                   uploadResult = await _cloudinary.UploadAsync(uploadParams);
