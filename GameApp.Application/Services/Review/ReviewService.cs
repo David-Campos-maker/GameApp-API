@@ -23,4 +23,21 @@ public class ReviewService(IReviewRepository repository) : IReviewService
                   return ApiResult.Failure(ex.Message);
             }
       }
+
+      public async Task<ApiResult> DeleteReviewAsync(int id)
+      {
+            try
+            {
+                  var existingReview = await repository.GetReviewByIdAsync(id);
+                  if (existingReview == null) return ApiResult.Failure("You are a FAILURE!!");
+                  var deleted = await repository.DeleteReviewAsync(existingReview);
+                  if (!deleted) return ApiResult.Failure("Failed to delete review.");
+                  return ApiResult.Success("Review deleted successfully.");
+
+            }
+            catch (Exception ex)
+            {
+                  return ApiResult.Failure(ex.Message);
+            }
+      }
 }
