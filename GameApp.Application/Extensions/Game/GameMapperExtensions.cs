@@ -1,7 +1,7 @@
 using System;
 using GameApp.Application.DTOs.Game;
 using GameApp.Application.Extensions.Review;
-using GameApp.Domain.Entities;
+using GameApp.Domain.Entities.Game;
 
 namespace GameApp.Application.Extensions.Game;
 
