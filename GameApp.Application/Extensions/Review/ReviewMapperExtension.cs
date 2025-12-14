@@ -1,6 +1,6 @@
 using System;
 using GameApp.Application.DTOs.Review;
-using GameApp.Domain.Entities;
+using GameApp.Domain.Entities.Review;
 
 namespace GameApp.Application.Extensions.Review;
 
