@@ -7,7 +7,7 @@ public record GameDto
       int Id,
       string Name, 
       DateOnly Published, 
-      string Platform, 
+      List<string> Platforms, 
       List<string> Genders,
       string? CoverPhotoUrl,
       List<ReviewDto> Reviews

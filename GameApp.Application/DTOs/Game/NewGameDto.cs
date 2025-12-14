@@ -4,6 +4,6 @@ public record NewGameDto
 (
       string Name, 
       DateOnly Published, 
-      string Platform, 
+      List<string> Platforms, 
       List<string> Genders
 );

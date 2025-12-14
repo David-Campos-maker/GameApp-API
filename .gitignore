@@ -41,3 +41,7 @@ Desktop.ini
 *.cache
 *.tmp
 .env
+
+## Running database files
+*.db-shm
+*.db-wal
