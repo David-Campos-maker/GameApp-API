@@ -6,6 +6,8 @@ using GameApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using GameApp.Domain.Entities.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace GameApp.Infrastructure.Extensions;
 
@@ -16,6 +18,10 @@ public static class InfrastructureDependencyInjection
             services.AddDbContext<GameAppDbContext>(options => {
                   options.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
+
+            // Identity setup
+            services.AddIdentity<UserEntity, IdentityRole<int>>()
+                  .AddEntityFrameworkStores<GameAppDbContext>();
 
             services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
