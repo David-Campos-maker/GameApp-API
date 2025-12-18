@@ -62,3 +62,9 @@ dotnet build
 ```bash
 dotnet watch run
 ```
+
+The project will be running at:
+
+```bash
+http://localhost:5023/scalar/
+```
