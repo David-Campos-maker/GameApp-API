@@ -4,7 +4,7 @@ using GameApp.Domain.Interfaces.Repositories;
 using GameApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace GameApp.Infrastructure.Repositories.Review;
+namespace GameApp.Infrastructure.Repositories;
 
 public class ReviewRepository(GameAppDbContext context) : IReviewRepository
 {
