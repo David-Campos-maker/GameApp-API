@@ -17,7 +17,9 @@
     <ProjectReference Include="..\GameApp.Domain\GameApp.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Endpoints\Identity\" />
     <Folder Include="Endpoints\Review\" />
+    <Folder Include="Extensions\Application\Identity\" />
     <Folder Include="Extensions\Application\Review\" />
   </ItemGroup>
 </Project>
