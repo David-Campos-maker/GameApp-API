@@ -1,6 +1,7 @@
 using System;
 using GameApp.Application.Helpers;
 using GameApp.Application.Services.Game;
+using GameApp.Application.Services.Identity;
 using GameApp.Application.Services.Photo;
 using GameApp.Application.Services.Review;
 using GameApp.Application.Services.Token;
@@ -19,6 +20,7 @@ public static class ApplicationDependencyInjection
 
             // Entity services
             services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IReviewService, ReviewService>();
 
             // Cofigure services settings

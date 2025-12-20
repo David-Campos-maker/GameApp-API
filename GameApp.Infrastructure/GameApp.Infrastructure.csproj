@@ -12,10 +12,6 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.0.11" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Review\" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

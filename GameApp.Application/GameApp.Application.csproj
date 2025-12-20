@@ -14,7 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs\Identity\" />
+    <Folder Include="Extensions\Identity\" />
     <Folder Include="Extensions\Review\" />
+    <Folder Include="Services\Identity\" />
     <Folder Include="Services\Review\" />
     <Folder Include="Services\Token\" />
   </ItemGroup>
