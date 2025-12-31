@@ -19,6 +19,7 @@
     <Folder Include="Services\Identity\" />
     <Folder Include="Services\Review\" />
     <Folder Include="Services\Token\" />
+    <Folder Include="Services\UserProfile\" />
   </ItemGroup>
 
   <PropertyGroup>

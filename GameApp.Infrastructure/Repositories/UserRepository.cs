@@ -23,8 +23,18 @@ public class UserRepository(UserManager<UserEntity> userManager) : IUserReposito
             return await userManager.DeleteAsync(entity);
       }
 
+      public async Task<UserEntity?> GetUserByIdAsync(int id)
+      {
+            return await userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+      }
+
       public async Task<UserEntity?> GetUserByUserNameAsync(string userName)
       {
             return await userManager.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+      }
+
+      public async Task<IdentityResult> UpdateUserAsync(UserEntity entity)
+      {
+            return await userManager.UpdateAsync(entity);
       }
 }

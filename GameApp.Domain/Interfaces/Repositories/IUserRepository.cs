@@ -10,4 +10,6 @@ public interface IUserRepository
       Task<IdentityResult> AddUserRoleAsync(UserEntity entity, string role);
       Task<IdentityResult> DeleteUserAsync(UserEntity entity);
       Task<UserEntity?> GetUserByUserNameAsync(string userName);
+      Task<UserEntity?> GetUserByIdAsync(int id);
+      Task<IdentityResult> UpdateUserAsync(UserEntity entity);
 }
