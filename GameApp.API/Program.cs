@@ -6,7 +6,6 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenApi();
 builder.Services.ConfigureServices(builder.Configuration);
 
 var app = builder.Build();
@@ -24,6 +23,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.ConfiguteEndpoints();
 
 app.Run();
