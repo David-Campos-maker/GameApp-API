@@ -6,5 +6,6 @@ namespace GameApp.Application.Services.Identity;
 
 public interface IIdentityService
 {
+      public Task<ApiResult<NewUserDto>> AuthenticateUserAsync(AuthenticateUserDto request);
       public Task<ApiResult<NewUserDto>> RegisterUserAsync(RegisterDto request);
 }

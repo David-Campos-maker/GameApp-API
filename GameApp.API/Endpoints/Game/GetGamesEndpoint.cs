@@ -1,6 +1,7 @@
 using System;
 using GameApp.API.Interfaces;
 using GameApp.Application.Services.Game;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sprache;
 
@@ -17,5 +18,8 @@ public class GetGamesEndpoint : IEndpoint
                         if (!result.Succeed) return Results.BadRequest(result.Message);
 
                         return Results.Ok(result.Data);
-                  });
+                  })
+                  .RequireAuthorization(new AuthorizationPolicyBuilder(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)
+                  .RequireAuthenticatedUser()
+                  .Build());
 }

@@ -13,5 +13,10 @@ public class UserEntity : IdentityUser<int>
             Email = email;
       }
 
+      public void SetProfilePhoto(UserPhotoEntity profilePhoto)
+      {
+            ProfilePhoto = profilePhoto;
+      }
+
       public UserPhotoEntity? ProfilePhoto { get; private set; }
 }

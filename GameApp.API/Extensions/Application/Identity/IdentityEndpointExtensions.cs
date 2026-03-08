@@ -12,6 +12,7 @@ public static class IdentityEndpointExtensions
 
             endpoits.MapGroup("identity/")
                   .WithTags("Identity")
+                  .MapEndpoint<AuthenticateUserEndpoint>()
                   .MapEndpoint<RegisterUserEndpoint>();
       }
 

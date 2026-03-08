@@ -5,6 +5,7 @@ using GameApp.Application.Services.Identity;
 using GameApp.Application.Services.Photo;
 using GameApp.Application.Services.Review;
 using GameApp.Application.Services.Token;
+using GameApp.Application.Services.UserProfile;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +23,7 @@ public static class ApplicationDependencyInjection
             services.AddScoped<IGameService, GameService>();
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IUserProfileService, UserProfileService>();
 
             // Cofigure services settings
             services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
