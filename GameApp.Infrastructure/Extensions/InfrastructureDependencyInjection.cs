@@ -22,6 +22,8 @@ public static class InfrastructureDependencyInjection
             services.AddIdentity<UserEntity, IdentityRole<int>>()
                   .AddEntityFrameworkStores<GameAppDbContext>();
 
+            services.AddSecurityConfig(config);
+
             services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

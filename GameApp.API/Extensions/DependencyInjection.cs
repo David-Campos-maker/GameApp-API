@@ -10,5 +10,6 @@ public static class DependencyInjection
       {
             services.AddInfrastructureServices(config);
             services.AddApplicationServices(config);
+            services.AddSwaggerScalarConfig();
       }
 }
